@@ -9,13 +9,26 @@ grammar miLenguaje;
   Map<String, Object> symbolTable = new HashMap<String, Object>();
 }
 
-program: expr;
+program: expr
+    {
+      List<ASTNode> body = new ArrayList<ASTNode>();
+      Map<String, Object> symbolTable = new HashMap<String, Object>();
+
+    }
+
+    (sentencia { body.add($sentencia.node); })*
+    {
+      for (ASTNode node : body) {
+        n.execute(symbolTable);
+      }
+    };
+
 expr: declaraciones;
 declaraciones: declaracion;
 declaracion: declaracionFuncion
           | declaracionVariable;
 declaracionVariable :tipo ID ';'
-{  };
+{ $node = new VariableDeclaration($tipo.text);};
 tipo            : 'entero' | 'caracter';
 declaracionFuncion : tipo ID '(' parametros?')' '{' declaraciones sentencias '}';
 parametros      : parametro ',' parametro;
@@ -23,14 +36,14 @@ parametro       : tipo ID;
 sentencias      : sentencia
                 | sentencias sentencia;
 sentencia       :
-// declaracionVariable
-//                | asignacion
-                 ifDeclaracion {$node = $ifDeclaracion.node;};
+                 declaracionVariable {$node = $declaracionVariable.node;}
+                 | asignacion {$node = $asignacion.node;}
+                 | ifDeclaracion {$node = $ifDeclaracion.node;};
 //                | whileDeclaracion
 //                | volverDeclaracion
 //                | declaracionExpresion;
 asignacion      : ID '=' expresion ';'
-{  };
+{ $node = new Assignment($ID.text, $expresion.node);};
 ifDeclaracion   : 'Puede' '(' expresion ')'
                   {
                       List<ASTNode> body = new ArrayList<ASTNode>();
@@ -64,7 +77,7 @@ factor returns [ASTNode node] : t1=termino {$node = $t1.node;}
 termino returns [ASTNode node] :
                 NUMBER {$node = new Constant(Integer.parseInt($NUMBER.text));}
                 | boolean {$node = new Constant($boolean.text == "facto"? true : false);}
-//                | ID {  }
+                | ID { $node = new VaraibleReference($ID.text); }
                 | '(' expresion {$node = $expresion.node; } ')';
 
 boolean : 'facto' | 'nfacto';

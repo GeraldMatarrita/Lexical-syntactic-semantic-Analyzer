@@ -1,5 +1,7 @@
 package InterpreterPattern;
 
+import java.util.Map;
+
 public class Addition implements ASTNode{
     private ASTNode operator1;
     private ASTNode operator2;
@@ -10,8 +12,8 @@ public class Addition implements ASTNode{
     }
 
     @Override
-    public Object execute() {
-        return (int) operator1.execute() + (int) operator2.execute();
+    public Object execute(Map<String, Object> symbolTable) {
+        return (int) operator1.execute(symbolTable) + (int) operator2.execute(symbolTable);
     }
 }
 

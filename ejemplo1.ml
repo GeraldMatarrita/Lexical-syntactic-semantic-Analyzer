@@ -2,14 +2,9 @@ entero main(){
   entero x;
   x = 5;
   entero y;
-  y = 2 + 2 * 4 ;
-}
-
-public class main
-
-public void main {
-  int x;
-  x = 5;
-  int y;
-  y = 2 + 2 * 4 ;
-}
+  y = 6;
+  Puede (x >= 0) {
+    x = x-1;
+  } Entonces{
+    retornar x;
+  }

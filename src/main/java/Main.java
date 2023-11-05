@@ -18,6 +18,8 @@ public class Main {
 
         ParseTree tree = parser.start();
 
+//        System.out.println(tree.toStringTree(parser));
+
         Map<String, Object> symbolTable = parser.symbolTable;
 
         for (Map.Entry<String, Object> entry : symbolTable.entrySet()) {

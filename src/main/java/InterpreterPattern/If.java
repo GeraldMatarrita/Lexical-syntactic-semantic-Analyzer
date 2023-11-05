@@ -1,6 +1,7 @@
 package InterpreterPattern;
 
 import java.util.List;
+import java.util.Map;
 
 public class If implements ASTNode {
     private ASTNode condition;
@@ -14,14 +15,14 @@ public class If implements ASTNode {
     }
 
     @Override
-    public Object execute() {
-        if ((boolean) condition.execute()) {
+    public Object execute(Map<String, Object> symbolTable) {
+        if ((boolean) condition.execute(symbolTable)) {
             for (ASTNode node : body) {
-                node.execute();
+                node.execute(symbolTable);
             }
         } else {
             for (ASTNode node : elseBody) {
-                node.execute();
+                node.execute(symbolTable);
             }
         }
         return null;
