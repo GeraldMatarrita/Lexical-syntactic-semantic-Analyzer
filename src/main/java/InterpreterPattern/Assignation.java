@@ -14,7 +14,15 @@ public class Assignation implements ASTNode{
 
     @Override
     public Object execute(Map<String, Object> symbolTable) {
-        symbolTable.put(name, expression.execute(symbolTable));
-        return null;
+        if (symbolTable.get(name) instanceof Integer && expression.execute(symbolTable) instanceof Integer){
+            symbolTable.put(name, execute(symbolTable));
+            return null;
+        } else if (symbolTable.get(name) instanceof String && expression.execute(symbolTable) instanceof String) {
+            symbolTable.put(name, execute(symbolTable));
+            return null;
+        } else {
+            System.out.println("Error: Type mismatch");
+            return null;
+        }
     }
 }

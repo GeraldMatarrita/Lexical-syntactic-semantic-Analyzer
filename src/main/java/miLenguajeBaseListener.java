@@ -28,18 +28,6 @@ public class miLenguajeBaseListener implements miLenguajeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr(miLenguajeParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpr(miLenguajeParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDeclaraciones(miLenguajeParser.DeclaracionesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -76,18 +64,6 @@ public class miLenguajeBaseListener implements miLenguajeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo(miLenguajeParser.TipoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTipo(miLenguajeParser.TipoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDeclaracionFuncion(miLenguajeParser.DeclaracionFuncionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -95,30 +71,6 @@ public class miLenguajeBaseListener implements miLenguajeListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDeclaracionFuncion(miLenguajeParser.DeclaracionFuncionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParametros(miLenguajeParser.ParametrosContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParametros(miLenguajeParser.ParametrosContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParametro(miLenguajeParser.ParametroContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParametro(miLenguajeParser.ParametroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -172,18 +124,6 @@ public class miLenguajeBaseListener implements miLenguajeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhileDeclaracion(miLenguajeParser.WhileDeclaracionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWhileDeclaracion(miLenguajeParser.WhileDeclaracionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterVolverDeclaracion(miLenguajeParser.VolverDeclaracionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -191,18 +131,6 @@ public class miLenguajeBaseListener implements miLenguajeListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVolverDeclaracion(miLenguajeParser.VolverDeclaracionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDeclaracionExpresion(miLenguajeParser.DeclaracionExpresionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDeclaracionExpresion(miLenguajeParser.DeclaracionExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
