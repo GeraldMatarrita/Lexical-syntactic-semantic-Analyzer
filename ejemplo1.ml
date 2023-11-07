@@ -1,13 +1,13 @@
 entero main(){
   entero x;
+  x = 2;
   Puede(hecho){
+    x = 5;
     entero y;
-    x = y;
+    y = x;
   } Entonces {
     entero y;
     x = 5;
-    y = 2 + 4;
-    x = y;
   }
   retornar x;
 }

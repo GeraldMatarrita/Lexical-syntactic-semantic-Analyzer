@@ -627,7 +627,7 @@ public class miLenguajeParser extends Parser {
 			((AsignacionContext)_localctx).expresion = expresion();
 			setState(105);
 			match(T__0);
-			 ((AsignacionContext)_localctx).node =  new Assignation((((AsignacionContext)_localctx).ID!=null?((AsignacionContext)_localctx).ID.getText():null), ((AsignacionContext)_localctx).expresion.node);
+			 ((AsignacionContext)_localctx).node =  new Assignment((((AsignacionContext)_localctx).ID!=null?((AsignacionContext)_localctx).ID.getText():null), ((AsignacionContext)_localctx).expresion.node);
 			}
 		}
 		catch (RecognitionException re) {

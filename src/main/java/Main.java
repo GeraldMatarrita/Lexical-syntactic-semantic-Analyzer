@@ -9,26 +9,29 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        // Reads the file with the program in the language miLenguaje
         String inputFileName = "ejemplo1.ml";
         CharStream input = CharStreams.fromFileName(inputFileName);
 
+        // Creates a lexer and a parser for the program
         miLenguajeLexer lexer = new miLenguajeLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         miLenguajeParser parser = new miLenguajeParser(tokens);
-        miLenguajeBaseListener listener = new miLenguajeBaseListener();
 
+        // Executes the parser to generate a parse tree for the program
         ParseTree tree = parser.start();
 
-//        System.out.println(tree.toStringTree(parser));
+        // Prints the parse tree in LISP format
+        System.out.println(tree.toStringTree(parser));
 
+        // Obtains the symbol table from the parser
         Map<String, Pair<String, Object>> symbolTable = parser.symbolTable;
 
+        // Obtains the AST from the parser and prints it
         for (Map.Entry<String, Pair<String, Object>> entry : symbolTable.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue().b);
         }
 
-//        System.out.println(tree.toStringTree(parser));
-//
 //        for (Token token : tokens.getTokens()) {
 //            System.out.println(token.getType() + ": " + token.getText());
 //        }

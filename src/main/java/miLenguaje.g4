@@ -51,7 +51,7 @@ sentencia returns [ASTNode node] :
 
 asignacion returns [ASTNode node]
                 : ID '=' expresion ';'
-                { $node = new Assignation($ID.text, $expresion.node);};
+                { $node = new Assignment($ID.text, $expresion.node);};
 
 ifDeclaracion returns [ASTNode node]:
                   'Puede' '(' termino ')'
