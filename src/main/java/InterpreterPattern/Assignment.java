@@ -32,7 +32,8 @@ public class Assignment implements ASTNode {
 
         // If the variable has not been declared, throw an error
         if (symbolTable.get(name) == null){
-            System.out.println("Error: La variable " + name + " no ha sido declarada.");
+            System.err.println("Error: La variable " + name + " no ha sido declarada.");
+            System.exit(1);
             return null;
         }
 

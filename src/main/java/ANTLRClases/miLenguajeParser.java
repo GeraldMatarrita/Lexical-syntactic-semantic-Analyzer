@@ -1,4 +1,4 @@
-// Generated from .//miLenguaje.g4 by ANTLR 4.13.1
+package ANTLRClases;// Generated from .//miLenguaje.g4 by ANTLR 4.13.1
 
 import java.util.Map;
 import java.util.HashMap;
@@ -10,7 +10,6 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
-import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
@@ -98,7 +97,7 @@ public class miLenguajeParser extends Parser {
 	public ATN getATN() { return _ATN; }
 
 
-	Map<String, Pair<String, Object>> symbolTable = new HashMap<String, Pair<String, Object>>();
+	public Map<String, Pair<String, Object>> symbolTable = new HashMap<String, Pair<String, Object>>();
 
 	public miLenguajeParser(TokenStream input) {
 		super(input);
