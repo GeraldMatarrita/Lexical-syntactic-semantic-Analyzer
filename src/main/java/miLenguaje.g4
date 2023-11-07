@@ -30,7 +30,6 @@ declaracionFuncion returns [ASTNode node] :
                     symbolTable.put("actualFunction", new Pair<>($ID.text, $TIPO.text));
                     symbolTable.put($ID.text, new Pair<>($TIPO.text, -1));
                 }
-//                declaracion { $node = new FunctionDeclaration($ID.text , $TIPO.text);}
                 (sentencia {body.add($sentencia.node);})*
                 '}'
                 {
@@ -50,24 +49,23 @@ sentencia returns [ASTNode node] :
                 | volverDeclaracion {$node = $volverDeclaracion.node;}
                 | declaracionFuncion {$node = $declaracionFuncion.node;};
 
-
 asignacion returns [ASTNode node]
                 : ID '=' expresion ';'
                 { $node = new Assignation($ID.text, $expresion.node);};
 
 ifDeclaracion returns [ASTNode node]:
-                  'Puede' '(' expresion ')'
+                  'Puede' '(' termino ')'
                   {
                       List<ASTNode> body = new ArrayList<ASTNode>();
                   }
-                  '{' sentencia (s1 = sentencia { body.add($s1.node);})* '}'
+                  '{' (s1=sentencia  { body.add($s1.node);})* '}'
                   'Entonces'
                   {
                         List<ASTNode> elseBody = new ArrayList<ASTNode>();
                   }
-                  '{' sentencia (s2 = sentencia { elseBody.add($s2.node);})* '}'
+                  '{' (s2=sentencia { elseBody.add($s2.node);})* '}'
                   {
-                        $node = new If($expresion.node, body, elseBody);
+                        $node = new If($termino.node, body, elseBody);
                   };
 
 volverDeclaracion returns [ASTNode node]:
@@ -87,7 +85,7 @@ factor returns [ASTNode node] :
 
 termino returns [ASTNode node] :
                 NUMBER {$node = new Constant(Integer.parseInt($NUMBER.text));}
-                | BOOLEAN {$node = new Constant($BOOLEAN.text == "hecho"? true : false);}
+                | BOOLEAN {$node = new Constant($BOOLEAN.text.equals("hecho") ? true : false);}
                 | ID { $node = new VariableReference($ID.text); }
                 | '(' expresion {$node = $expresion.node; } ')';
 

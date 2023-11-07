@@ -5,3 +5,6 @@ src/main/resources/miLenguaje.interp
 target/classes/InterpreterPattern/Addition.class
 target/classes/InterpreterPattern/ASTNode.class
 target/classes/InterpreterPattern/Constant.class
+.idea/vcs.xml
+target/classes/InterpreterPattern/Addition.class
+target/classes/InterpreterPattern/ASTNode.class
