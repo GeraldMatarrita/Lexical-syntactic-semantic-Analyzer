@@ -1,5 +1,7 @@
 package InterpreterPattern;
 
+import org.antlr.v4.runtime.misc.Pair;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class If implements ASTNode {
     }
 
     @Override
-    public Object execute(Map<String, Object> symbolTable) {
+    public Object execute(Map<String, Pair<String, Object>> symbolTable) {
         if ((boolean) condition.execute(symbolTable)) {
             for (ASTNode node : body) {
                 node.execute(symbolTable);

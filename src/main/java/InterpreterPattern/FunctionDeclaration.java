@@ -1,10 +1,11 @@
 package InterpreterPattern;
 
+import org.antlr.v4.runtime.misc.Pair;
+
 import java.util.Map;
 
 public class FunctionDeclaration implements ASTNode{
     private String name;
-
     private String type;
 
     public FunctionDeclaration(String name, String type) {
@@ -13,8 +14,8 @@ public class FunctionDeclaration implements ASTNode{
     }
 
     @Override
-    public Object execute(Map<String, Object> symbolTable) {
-        symbolTable.put(name, type);
+    public Object execute(Map<String, Pair<String, Object>> symbolTable) {
+        symbolTable.put(name, new Pair<>(type, null));
         return null;
     }
 }

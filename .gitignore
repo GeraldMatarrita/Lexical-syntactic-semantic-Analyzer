@@ -1,2 +1,7 @@
 
 target/*
+src/main/resources/miLenguaje.interp
+*.class
+target/classes/InterpreterPattern/Addition.class
+target/classes/InterpreterPattern/ASTNode.class
+target/classes/InterpreterPattern/Constant.class

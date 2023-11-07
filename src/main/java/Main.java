@@ -1,4 +1,5 @@
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.Pair;
 import org.antlr.v4.runtime.tree.*;
 
 import java.util.HashMap;
@@ -20,10 +21,10 @@ public class Main {
 
 //        System.out.println(tree.toStringTree(parser));
 
-        Map<String, Object> symbolTable = parser.symbolTable;
+        Map<String, Pair<String, Object>> symbolTable = parser.symbolTable;
 
-        for (Map.Entry<String, Object> entry : symbolTable.entrySet()) {
-            System.out.println(entry.getKey() + " = " + entry.getValue());
+        for (Map.Entry<String, Pair<String, Object>> entry : symbolTable.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue().b);
         }
 
 //        System.out.println(tree.toStringTree(parser));

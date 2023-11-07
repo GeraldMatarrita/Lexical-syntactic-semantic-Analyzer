@@ -1,54 +1,56 @@
 grammar miLenguaje;
 
 @parser::header {
-  import java.util.Map;
-  import java.util.HashMap;
-  import InterpreterPattern.*;
+import java.util.Map;
+import java.util.HashMap;
+import InterpreterPattern.*;
 }
 
 @parser::members {
-  Map<String, Object> symbolTable = new HashMap<String, Object>();
+Map<String, Pair<String, Object>> symbolTable = new HashMap<String, Pair<String, Object>>();
 }
 
-start: declaracionFuncion EOF;
+start: declaraciones EOF;
 
 declaraciones returns [ASTNode node]:
                 declaracion {$node = $declaracion.node;};
+
 
 declaracion returns [ASTNode node]:
                 declaracionFuncion {$node = $declaracionFuncion.node; } (declaraciones {$node = $declaraciones.node; })*
                 | declaracionVariable {$node = $declaracionVariable.node; } (declaraciones {$node = $declaraciones.node; })*;
 declaracionVariable returns [ASTNode node]:
                 TIPO ID ';'
-                { $node = new VariableDeclaration($ID.text);};
+                { $node = new VariableDeclaration($ID.text, $TIPO.text);};
 
 declaracionFuncion returns [ASTNode node] :
                 TIPO ID '(' ')' '{'
                 {
                     List<ASTNode> body = new ArrayList<ASTNode>();
-                    symbolTable.put("actualFunction", $ID.text);
+                    symbolTable.put("actualFunction", new Pair<>($ID.text, $TIPO.text));
+                    symbolTable.put($ID.text, new Pair<>($TIPO.text, -1));
                 }
 //                declaracion { $node = new FunctionDeclaration($ID.text , $TIPO.text);}
-                sentencias {body.add($sentencias.node);}
+                (sentencia {body.add($sentencia.node);})*
                 '}'
                 {
                     for (ASTNode node : body) {
                         node.execute(symbolTable);
                     }
-                };
+                }
+                {$node = new FunctionDeclaration($ID.text , $TIPO.text);};
 
 sentencias returns [ASTNode node] :
-                sentencia {$node = $sentencia.node;}
-                | sentencias sentencia {$node = $sentencia.node;};
+                sentencia {$node = $sentencia.node;} sentencias *;
 
 sentencia returns [ASTNode node] :
                  declaracionVariable {$node = $declaracionVariable.node;}
                 | asignacion {$node = $asignacion.node;}
                 | ifDeclaracion {$node = $ifDeclaracion.node;}
-                | volverDeclaracion {$node = $volverDeclaracion.node;};
+                | volverDeclaracion {$node = $volverDeclaracion.node;}
+                | declaracionFuncion {$node = $declaracionFuncion.node;};
 
-//                | whileDeclaracion
-//                | volverDeclaracion
+
 asignacion returns [ASTNode node]
                 : ID '=' expresion ';'
                 { $node = new Assignation($ID.text, $expresion.node);};
@@ -72,10 +74,10 @@ volverDeclaracion returns [ASTNode node]:
                 'retornar' expresion ';' {$node = new Return($expresion.node);};
 
 expresion returns [ASTNode node] :
-                t1=factor {$node = $t1.node;}
-                ( '+' t2=factor {$node = new Addition($node, $t2.node);}) *
-                | t1=factor {$node = $t1.node;}
-                ( '-' t2=factor {$node = new Subtraction($node, $t2.node);}) *;
+                f1=factor {$node = $f1.node;}
+                ( '+' f2=factor {$node = new Addition($node, $f2.node);}) * (expresion)*
+                | f1=factor {$node = $f1.node;}
+                ( '-' f2=factor {$node = new Subtraction($node, $f2.node);}) * (expresion)*;
 
 factor returns [ASTNode node] :
                 t1=termino {$node = $t1.node;}
