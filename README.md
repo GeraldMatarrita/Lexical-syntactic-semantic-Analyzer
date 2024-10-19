@@ -1,4 +1,4 @@
-#Lexical, Syntactic, and Semantic Analyzer
+# Lexical, Syntactic, and Semantic Analyzer
 
 This lexical and semantic analyzer can be executed using the .JAR file located in the compressed folder of this project.
 Please ensure you have Java 18 or higher installed, as the program is compiled with this version.
