@@ -30,5 +30,7 @@ If there is an error in the input.txt file, an error message will be displayed, 
 The output.txt file will contain the results obtained from each phase of the compiler:
 
 Lexical Analyzer: Displays the symbol table.
+
 Syntactic Analyzer: Displays the syntax tree.
+
 Semantic Analyzer: Shows the symbol table with the data types of each variable or function.
