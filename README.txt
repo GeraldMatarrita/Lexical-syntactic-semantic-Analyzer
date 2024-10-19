@@ -7,7 +7,9 @@ Este analizador léxico, y semántico se puede ejecutar por medio del .JAR en la
 Para ser ejecutado es necesario descomprimir el .zip en una carpeta a gusto, 
 después abrir esa carpeta en el terminal o CMD y ejecutar el siguiente comando:
 
--- java -jar miCompilador.jar prueba1.ml output.txt
+```
+java -jar miCompilador.jar prueba1.ml output.txt
+```
 
 Tomar en cuenta que la extensión del archivo de entrada debe de ser .ml, que es la extensión que se le asignó a los
 archivos escritos en miLenguaje. Los archivos de ejemplo se encuentran en la carpeta raíz del proyecto \miCompilador.
@@ -17,7 +19,9 @@ con errores.
 
 Después de ejecutar el jar debe de salir este mensaje (En caso de éxito):
 
--- Return 'valor'
+```
+Return 'valor'
+```
 
 Si se encuentra algún error en el archivo input.txt se mostrará un mensaje de error y se detendrá la ejecución. Por lo
 que no se generará el archivo output.txt.
