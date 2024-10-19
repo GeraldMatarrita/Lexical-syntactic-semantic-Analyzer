@@ -1,35 +1,34 @@
-# Proyecto_Compiladores
-Analizador léxico, sintáctico y semántico
+#Lexical, Syntactic, and Semantic Analyzer
 
-Este analizador léxico, y semántico se puede ejecutar por medio del .JAR en la carpeta comprimida de este proyecto.
-(Se necesita tener instalado Java 18 o superior, dado que el programa está compilado en esta versión).
+This lexical and semantic analyzer can be executed using the .JAR file located in the compressed folder of this project.
+Please ensure you have Java 18 or higher installed, as the program is compiled with this version.
 
-Para ser ejecutado es necesario descomprimir el .zip en una carpeta a gusto, 
-después abrir esa carpeta en el terminal o CMD y ejecutar el siguiente comando:
+## How to Run
+Unzip the .zip file to a directory of your choice.
+
+Open a terminal or CMD in that directory.
+
+Execute the following command:
 
 ```
 java -jar miCompilador.jar prueba1.ml output.txt
 ```
 
-Tomar en cuenta que la extensión del archivo de entrada debe de ser .ml, que es la extensión que se le asignó a los
-archivos escritos en miLenguaje. Los archivos de ejemplo se encuentran en la carpeta raíz del proyecto \miCompilador.
-Además, para los primeros dos archivos de ejemplo se han creado archivos de salida con los resultados obtenidos por el
-compilador. En cuanto a los otros dos archivos de ejemplo, no se han creado archivos de salida dado que se encuentran
-con errores.
-
-Después de ejecutar el jar debe de salir este mensaje (En caso de éxito):
+### Important Notes
+The input file must have the .ml extension, which is designated for files written in miLenguaje. Example files can be found in the root folder of the project under miCompilador.
+For the first two example files, output files have been created with the results obtained by the compiler. However, the other two example files do not have corresponding output files as they contain errors.
+Success Message
+After running the JAR file, you should see the following message (in case of success):
 
 ```
-Return 'valor'
+Return 'value'
 ```
 
-Si se encuentra algún error en el archivo input.txt se mostrará un mensaje de error y se detendrá la ejecución. Por lo
-que no se generará el archivo output.txt.
+If there is an error in the input.txt file, an error message will be displayed, and execution will stop, resulting in no output.txt file being generated.
 
-En el archivo output.txt se mostrarán los resultados obtenidos por cada una de las fases del compilador. En el caso del
-analizador léxico se mostrará la tabla de símbolos, en el caso del analizador sintáctico se mostrará el árbol sintáctico
-y en el caso del analizador semántico se mostrará la tabla de símbolos con los tipos de datos de cada variable o función.
+## Output File
+The output.txt file will contain the results obtained from each phase of the compiler:
 
-Si desea ver el código en IntelliJ puede seleccionar la opción de abrir proyecto y seleccionar la carpeta llamada
-miCompilador y dirigirse a las carpetas src para ver las diferentes clases.
-
+Lexical Analyzer: Displays the symbol table.
+Syntactic Analyzer: Displays the syntax tree.
+Semantic Analyzer: Shows the symbol table with the data types of each variable or function.
